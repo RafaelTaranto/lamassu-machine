@@ -1,0 +1,35 @@
+<div class="flex flex-col items-center h-full">
+    <header class="flex-[0_1_48vh] flex flex-col items-center justify-end">
+        <div x-show="ICON" x-html="ICON"></div>
+        <h3 class="mb-0" x-text="TITLE"></h3>
+    </header>
+    <main class="flex flex-col flex-auto text-justify items-start justify-top max-w-[80vh] mt-8">
+        <p class="mt-0 d2" x-show="P1" x-text="P1"></p>
+        <p class="mt-0 d2" x-show="P2" x-text="P2"></p>
+        <p class="mt-0 d2" x-show="P3" x-text="P3"></p>
+
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <img src="images/contact/operator.svg">
+                    <span class="d2 operator-name">Rafael Taranto</span>
+                </td>
+                <td>
+                    <img src="images/contact/phone.svg">
+                    <span class="d2 operator-phone">+55 82 2288-3828</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <img src="images/contact/email.svg">
+                    <span class="d2 operator-email">my-long-email@hotmail.com.br</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer class="flex-[0_1_26vh] flex flex-col items-center justify-top">
+        <button class="rounded-full">hehe</button>
+    </footer>
+</div>

@@ -1,0 +1,88 @@
+@layer base {
+  /* Common styles for all headings */
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+    font-family: var(--default-h-font-family);
+    color: var(--font-color);
+    font-weight: 900;
+  }
+
+  /* Hebrew-specific font stack */
+  .i28n-he {
+    & h1, & .h1, & h2, & .h2, & h3, & .h3, & h4, & .h4, & h5, & .h5 {
+      font-family: var(--alt-h-font-family);
+    }
+  }
+
+  /* Heading-specific styles */
+  h1, .h1 { --size: 12; --line-height: 0.92; margin: 0.67em 0; }
+  h2, .h2 { --size: 8; --line-height: 0.88; margin: 0.83em 0 }
+  h3, .h3 { --size: 6; --line-height: 0.83; margin: 1em 0}
+  h4, .h4 { --size: 3; --line-height: 1.67; margin: 1.33em 0; }
+  h5, .h5 { --size: 5; --line-height: 1.2; margin: 1.67em 0; }
+  p { margin: 1em 0; }
+
+  .tl1, .tl2, .d1, .d2 {
+    font-family: var(--default-d-font-family);
+  }
+
+  .museo {
+    & .tl1, & .tl2, & .d1, & .d2 {
+      font-family: var(--alt-d-font-family);
+    }
+  }
+
+  .tl1, .tl2 {
+    font-weight: 700;
+  }
+
+  .d1, .d2 {
+    font-weight: 500;
+  }
+
+  /* description-specific styles */
+  .tl1 { --size: 5; --line-height: 1.2; }
+  .tl2 { --size: 3; --line-height: 0.8; }
+  .d1 { --size: 4; --line-height: 1.25; }
+  .d2 { --size: 3; --line-height: 1.33; }
+
+  .m1, .m2 {
+    font-family: BPmono;
+  }
+
+  .m1 { --size: 4; --line-height: 1; }
+  .m2 { --size: 3; --line-height: 1; }
+
+
+  /* Apply colors */
+  .cash-in-color, .system-color {
+    & .tl1, & .tl2, & .d1, & .d2, & .m1, & .m2 {
+      color: var(--cashin-accent-color);
+    }
+  }
+
+  .system-color {
+    & .h1, h2, h3 {
+      color: var(--cashin-accent-color);
+    }
+  }
+
+  .cash-out-color {
+    & .tl1, & .tl2, & .d1, & .d2, & .m1, & .m2 {
+      color: var(--cashout-accent-color);
+    }
+  }
+
+  /* Apply sizes and line heights */
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .tl1, .tl2, .d1, .d2 {
+    font-size: calc(var(--size) * 1vh);
+    line-height: var(--line-height);
+  }
+
+  /* Media query for portrait orientation */
+  @media (orientation: portrait) {
+    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .tl1, .tl2, .d1, .d2 {
+      font-size: calc(var(--size) * 1vw);
+    }
+  }
+
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/src/css/main.css" />
+
+    <body class="m-0 overflow-hidden select-none h-full">
+        <section x-data="app" class="h-full">
+            
+            <section x-show="template === 'booting'" class="h-full museo" :class="bodyClassPicker(currentScreen)">
+                <!-- TODO remove museo from here, should be dynamically put on a higher level depending on lang -->
+<main class="flex flex-col items-center justify-center h-full museo" data-screentype="system-tp">
+    <div class="sk-three-bounce">
+        <div class="sk-child sk-bounce1"></div>
+        <div class="sk-child sk-bounce2"></div>
+        <div class="sk-child sk-bounce3"></div>
+    </div>
+    <h2 class="mb-0 text-[var(--cashin-accent-color)]" x-text="$t('BOOTING')"></h2>
+    <p class="d1 text-[var(--cashin-accent-color)]" x-text="$t('INITIALIZING_HARDWARE')"></p>
+    <p class="mt-0 d1 text-[var(--cashin-accent-color)]">
+        <strong x-text="$t('WELL_BE_UP')"></strong>
+    </p>
+</main>
+            </section>
+            
+            <section x-show="template === 'connecting'" class="h-full museo" :class="bodyClassPicker(currentScreen)">
+                <main class="flex flex-col items-center justify-center h-full">
+    <h2 class="landscape:mt-[11vh] portrait:mb-[15vh]" x-text="$t('CONNECTING')"></h2>
+</main>
+
+            </section>
+            
+            <section x-show="template === 'info-action-template'" class="h-full museo" :class="bodyClassPicker(currentScreen)">
+                <div class="flex flex-col items-center h-full">
+    <header class="flex-[0_1_48vh] flex flex-col items-center justify-end">
+        <div x-show="ICON" x-html="ICON"></div>
+        <h3 class="mb-0" x-text="TITLE"></h3>
+    </header>
+    <main class="flex flex-col flex-auto text-justify items-start justify-top max-w-[80vh] mt-8">
+        <p class="mt-0 d2" x-show="P1" x-text="P1"></p>
+        <p class="mt-0 d2" x-show="P2" x-text="P2"></p>
+        <p class="mt-0 d2" x-show="P3" x-text="P3"></p>
+
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <img src="images/contact/operator.svg">
+                    <span class="d2 operator-name">Rafael Taranto</span>
+                </td>
+                <td>
+                    <img src="images/contact/phone.svg">
+                    <span class="d2 operator-phone">+55 82 2288-3828</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <img src="images/contact/email.svg">
+                    <span class="d2 operator-email">my-long-email@hotmail.com.br</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer class="flex-[0_1_26vh] flex flex-col items-center justify-top">
+        <button class="rounded-full">hehe</button>
+    </footer>
+</div>
+
+            </section>
+            
+            <section x-show="template === 'verifying'" class="h-full museo" :class="bodyClassPicker(currentScreen)">
+                <main class="flex flex-col items-center justify-center h-full">
+    <div x-html="ICON"></div>
+    <h2 class="mb-0 landscape:mt-[11vh] portrait:mb-[15vh]" x-text="TITLE"></h2>
+    <p class="d1" x-text="P1"></p>
+</main>
+
+            </section>
+            
+        </section>
+    <script type="module" src="/src/js/main.js"></script>
+    </body>
+</html>

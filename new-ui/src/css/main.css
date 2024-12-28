@@ -1,0 +1,21 @@
+@import "./fonts.css";
+@import "./variables.css";
+@import "./typography.css";
+@import "./buttons.css";
+@import "./loading.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.system-color {
+  background-color: theme(colors.concrete);
+}
+
+.cash-out-color {
+  background-color: var(--cashout-primary-color);
+}
+
+.cash-in-color {
+  background-color: var(--cashin-primary-color);
+}

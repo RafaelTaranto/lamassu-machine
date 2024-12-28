@@ -1,0 +1,36 @@
+/* Color palette */
+
+@layer base {
+  :root {
+    --cashin-primary-color: theme(colors.amazonite.primary);
+    --cashin-secondary-color: theme(colors.amazonite.secondary);
+    --cashin-tertiary-color: theme(colors.amazonite.tertiary);
+    --cashin-accent-color: theme(colors.amazonite.accent);
+
+    --cashout-primary-color: theme(colors.salmon.primary);
+    --cashout-secondary-color: theme(colors.salmon.secondary);
+    --cashout-tertiary-color: theme(colors.salmon.tertiary);
+    --cashout-accent-color: theme(colors.salmon.accent);
+
+    --direction-color: var(--cashin-primary-color);
+
+    --font-color: theme(colors.white);
+    --dark-color: theme(colors.charcoal);
+    --light-color: theme(colors.concrete);
+    --border-color: theme('colors.black / 0.08');
+
+    --default-h-font-family: 'Mont Heavy', 'Rubik', 'Noto Sans CJK CS', 'Noto Sans CJK JP', 'Noto Sans CJK KR', 'Noto Sans CJK TC', 'Noto Kufi Arabic';
+    --alt-h-font-family: 'Rubik', 'Mont Heavy', 'Noto Sans CJK CS', 'Noto Sans CJK JP', 'Noto Sans CJK KR', 'Noto Sans CJK TC', 'Noto Kufi Arabic';
+    --default-d-font-family: 'Rubik', 'MuseoSans', 'Noto Sans CJK CS', 'Noto Sans CJK JP', 'Noto Sans CJK KR', 'Noto Sans CJK TC', 'Noto Sans Hebrew', 'Noto Kufi Arabic';
+    --alt-d-font-family: 'MuseoSans', 'Rubik', 'Noto Sans CJK CS', 'Noto Sans CJK JP', 'Noto Sans CJK KR', 'Noto Sans CJK TC', 'Noto Sans Hebrew', 'Noto Kufi Arabic';
+
+    --spacing: 4vh;
+  }
+
+  @media (orientation :portrait) {
+    :root {
+      --spacing: 4vw;
+    }
+  }
+
+}
