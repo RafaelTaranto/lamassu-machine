@@ -27,7 +27,8 @@ FROM lamassu/upboard-build:3.0 as build
   RUN json -I -f package.json -e 'this.dependencies["@lamassu/manatee"] = this.optionalDependencies["@lamassu/manatee"]; delete this.optionalDependencies["@lamassu/manatee"]'
 
   RUN npm version --allow-same-version --git-tag-version false --commit-hooks false 1.0.0
-  RUN npm install --cpu=x64 --os=linux --libc=glibc
+  RUN npm install
+  RUN npm i --cpu=wasm32 sharp@0.33.5
   COPY . ./
 
   RUN bash ./deploy/codebase/ci-build.sh && \
