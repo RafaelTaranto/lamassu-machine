@@ -291,9 +291,11 @@ function processData (data) {
       setState('action_required_maintenance')
       break
     case 'cashSlotRemoveBills':
+      document.getElementById('cash-slot-bills-removed').disabled = false
       setState('cash_slot_remove_bills')
       break
     case 'leftoverBillsInCashSlot':
+      document.getElementById('leftover-bills-removed').disabled = false
       setState('leftover_bills_in_cash_slot')
       break
     case 'invalidAddress':
@@ -720,8 +722,18 @@ $(document).ready(function () {
   setupButton('recycler-continue-start', 'recyclerContinue')
   setupButton('recycler-continue', 'recyclerContinue')
   setupButton('recycler-finish', 'sendCoins')
-  setupButton('cash-slot-bills-removed', 'cashSlotBillsRemoved')
-  setupButton('leftover-bills-removed', 'leftoverBillsRemoved')
+
+  const leftoverBillsRemovedButton = document.getElementById('leftover-bills-removed')
+  touchEvent(leftoverBillsRemovedButton, function () {
+    leftoverBillsRemovedButton.disabled = true
+    buttonPressed('leftoverBillsRemoved', undefined)
+  })
+
+  const cashSlotBillsRemovedButton = document.getElementById('cash-slot-bills-removed')
+  touchEvent(cashSlotBillsRemovedButton, function () {
+    cashSlotBillsRemovedButton.disabled = true
+    buttonPressed('cashSlotBillsRemoved', undefined)
+  })
 
   const blockedCustomerOk = document.getElementById('blocked-customer-ok')
   touchEvent(blockedCustomerOk, function () {
