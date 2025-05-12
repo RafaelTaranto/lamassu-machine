@@ -1,12 +1,12 @@
 {
   "name": "lamassu-machine",
   "license": "./LICENSE",
-  "version": "10.2.0-beta.0",
+  "version": "11.0.0-beta.1",
   "dependencies": {
-    "@dwe.ai/v4l2camera": "^1.2.3",
     "@haensl/subset-sum": "^3.0.5",
     "@lamassu/coins": "1.6.1",
     "@lamassu/supyo": "2.0.0",
+    "@lamassu/v4l2camera": "1.4.2",
     "@urql/core": "^5.1.1",
     "async": "~1.5.2",
     "base-x": "3.0.9",
@@ -27,7 +27,7 @@
     "ping": "^0.4.1",
     "semver": "^7.1.3",
     "serialport": "^10.5.0",
-    "sharp": "^0.33.5",
+    "sharp": "^0.32.6",
     "tar": "6.1.14",
     "uuid": "9.0.1",
     "ws": "^3.1.0",
@@ -37,7 +37,7 @@
   "optionalDependencies": {
     "@lamassu/bnr-advance": "1.4.0",
     "@lamassu/genmega": "^1.3.0",
-    "@lamassu/manatee": "^1.0.3"
+    "@lamassu/manatee": "^1.1.0"
   },
   "devDependencies": {
     "autoprefixer": "9.4.5",

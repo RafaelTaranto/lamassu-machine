@@ -14,20 +14,13 @@ const newPath = process.argv[4];
 const basePath = newPath ? '/opt/lamassu-updates/extract' : '/tmp/extract'
 const packagePath = `${basePath}/package/subpackage`
 
-const machineWithMultipleCodes = ['upboard', 'up4000', 'coincloud', 'generalbytes', 'genmega']
+const supportedMachines = ['upboard', 'up4000', 'coincloud', 'generalbytes', 'genmega']
 
-const hardwarePath = machineWithMultipleCodes.includes(hardwareCode) ?
-  `${packagePath}/hardware/${hardwareCode}/${machineCode}` :
-  `${packagePath}/hardware/${hardwareCode}`
-
-const supervisorPath = machineWithMultipleCodes.includes(hardwareCode) ?
-  `${packagePath}/supervisor/${hardwareCode}/${machineCode}` :
-  `${packagePath}/supervisor/${hardwareCode}`
-
-const udevPath = `${packagePath}/udev/aaeon`
+const hardwarePath = `${packagePath}/hardware/${hardwareCode}/${machineCode}`
+const supervisorPath = `${packagePath}/supervisor/${hardwareCode}/${machineCode}`
 
 const TIMEOUT = 600000;
-const applicationParentFolder = hardwareCode === 'aaeon' ? '/opt/apps/machine' : '/opt'
+const applicationParentFolder = '/opt'
 
 const LOG = msg => report(null, msg, () => {})
 const ERROR = err => report(err, null, () => {})
@@ -59,28 +52,14 @@ const isLMX = () =>
 
 const getOSUser = () => {
   try {
-    return (!machineWithMultipleCodes.includes(hardwareCode) || isLMX()) ? 'lamassu' : 'ubilinux'
+    return isLMX() ? 'lamassu' : 'ubilinux'
   } catch (err) {
     return 'ubilinux'
   }
 }
 
-function updateUdev (cb) {
-  LOG("Updating udev rules")
-  if (hardwareCode !== 'aaeon') return cb()
-  return async.series([
-    async.apply(command, `cp ${udevPath}/* /etc/udev/rules.d/`),
-    async.apply(command, 'udevadm control --reload-rules'),
-    async.apply(command, 'udevadm trigger'),
-  ], (err) => {
-    if (err) throw err;
-    cb()
-  })
-}
-
 function updateSupervisor (cb) {
   LOG("Updating Supervisor services")
-  if (hardwareCode === 'aaeon') return cb()
 
   const getServices = () => {
     const extractServices = stdout => {
@@ -202,18 +181,6 @@ function restartWatchdogService (cb) {
   })
 }
 
-function updateAcpChromium (cb) {
-  LOG("Updating ACP Chromium")
-  if (hardwareCode !== 'aaeon') return cb()
-  return async.series([
-    async.apply(command, `cp ${hardwarePath}/sencha-chrome.conf /home/iva/.config/upstart/`),
-    async.apply(command, `cp ${hardwarePath}/start-chrome /home/iva/`),
-  ], function(err) {
-    if (err) throw err;
-    cb()
-  });
-}
-
 function installDeviceConfig (cb) {
   LOG("Installing `device_config.json`")
   try {
@@ -271,22 +238,22 @@ function installDeviceConfig (cb) {
 }
 
 const upgrade = () => {
-  const arch = hardwareCode === 'aaeon' ? '386' :
-    hardwareCode === 'ssuboard' ? 'arm32' :
-    'amd64'
+  if (!supportedMachines.includes(hardwareCode)) {
+    const errorStr = `trying to update unsupported board ${hardwareCode}`
+    ERROR(errorStr)
+    return Promise.reject(errorStr)
+  }
 
   const commands = [
     async.apply(command, `tar zxf ${basePath}/package/subpackage.tgz -C ${basePath}/package/`),
     async.apply(command, `rm -rf ${applicationParentFolder}/lamassu-machine/node_modules/`),
     async.apply(command, `cp -PR ${basePath}/package/subpackage/lamassu-machine ${applicationParentFolder}`),
-    async.apply(command, `mv ${applicationParentFolder}/lamassu-machine/verify/verify.${arch} ${applicationParentFolder}/lamassu-machine/verify/verify`),
+    async.apply(command, `mv ${applicationParentFolder}/lamassu-machine/verify/verify.amd64 ${applicationParentFolder}/lamassu-machine/verify/verify`),
     async.apply(installDeviceConfig),
     async.apply(updateSupervisor),
     async.apply(updateSystemd),
     async.apply(addUserToGroups),
     async.apply(disableSSH),
-    async.apply(updateUdev),
-    async.apply(updateAcpChromium),
     async.apply(report, null, 'finished.'),
     async.apply(restartWatchdogService),
   ]
