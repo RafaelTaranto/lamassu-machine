@@ -20,9 +20,9 @@ FROM lamassu/upboard-build:4.3 as native-builder
 
   RUN npm install --global json
   RUN json -I -f package.json -e 'this._dependencies = {}'
-  RUN json -I -f package.json -e 'this._dependencies["@lamassu/v4l2camera"] = this.dependencies["@lamassu/v4l2camera"];'
+  RUN json -I -f package.json -e 'this._dependencies["@lamassu/v4l2camera"] = this.optionalDependencies["@lamassu/v4l2camera"];'
   RUN json -I -f package.json -e 'this._dependencies["@lamassu/manatee"] = this.optionalDependencies["@lamassu/manatee"];'
-  RUN json -I -f package.json -e 'this._dependencies["@lamassu/supyo"] = this.dependencies["@lamassu/supyo"];'
+  RUN json -I -f package.json -e 'this._dependencies["@lamassu/supyo"] = this.optionalDependencies["@lamassu/supyo"];'
   RUN json -I -f package.json -e 'delete this.optionalDependencies; this.dependencies = this._dependencies;'
 
   RUN npm install --omit=dev
@@ -58,7 +58,7 @@ FROM lamassu/upboard-build:3.0 as build
   RUN npm install --global json
   RUN json -I -f package.json -e 'this.dependencies["@lamassu/bnr-advance"] = this.optionalDependencies["@lamassu/bnr-advance"]; delete this.optionalDependencies["@lamassu/bnr-advance"]'
   RUN json -I -f package.json -e 'this.dependencies["@lamassu/genmega"] = this.optionalDependencies["@lamassu/genmega"]; delete this.optionalDependencies["@lamassu/genmega"]'
-  RUN json -I -f package.json -e 'delete this.dependencies["@lamassu/v4l2camera"]; delete this.optionalDependencies["@lamassu/manatee"]; delete this.dependencies["@lamassu/supyo"]'
+  RUN json -I -f package.json -e 'delete this.optionalDependencies["@lamassu/v4l2camera"]; delete this.optionalDependencies["@lamassu/manatee"]; delete this.optionalDependencies["@lamassu/supyo"]'
 
   RUN npm i
 
