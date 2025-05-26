@@ -225,7 +225,7 @@ function copyToClipboard (element) {
 }
 
 function setupFakes () {
-  let amount = [ '<span class="integer">34</span><span class="decimal-char">',
+  let amount = ['<span class="integer">34</span><span class="decimal-char">',
     '.', '</span><span class="decimal">479</span>'
   ].join('')
 
@@ -292,7 +292,9 @@ function setupFakes () {
     $('.waiting_state'),
     $('.scan_manual_id_photo_state'),
     $('.promo_code_not_found_state'),
-    $('.custom_permission_screen2_choiceList_state')
+    $('.custom_permission_screen2_choiceList_state'),
+    $('.external_compliance_state'),
+    $('.external_permission_state')
   ]
 
   states.forEach(it => {
