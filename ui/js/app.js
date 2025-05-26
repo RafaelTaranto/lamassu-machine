@@ -2183,12 +2183,11 @@ function enableLiveview(liveviewPort) {
 
   var loaded = false;
   liveviewImg.onload = function () {
-    console.log('loaded', loaded);
     if (!loaded) {
       $('#scan-images').addClass('hide');
       liveviewDiv.removeClass('hide');
     }
-    loaded = truet;
+    loaded = true;
   };
 
   liveviewDiv.append(liveviewImg);
