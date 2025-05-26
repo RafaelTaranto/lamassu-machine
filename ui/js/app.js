@@ -293,9 +293,11 @@ function processData(data) {
       setState('action_required_maintenance');
       break;
     case 'cashSlotRemoveBills':
+      document.getElementById('cash-slot-bills-removed').disabled = false;
       setState('cash_slot_remove_bills');
       break;
     case 'leftoverBillsInCashSlot':
+      document.getElementById('leftover-bills-removed').disabled = false;
       setState('leftover_bills_in_cash_slot');
       break;
     case 'invalidAddress':
@@ -311,6 +313,12 @@ function processData(data) {
       break;
     case 'rates':
       setState('rates');
+      break;
+    case 'enableLiveview':
+      enableLiveview(data.liveviewPort);
+      break;
+    case 'disableLiveview':
+      disableLiveview();
       break;
     default:
       if (data.action) setState(window.snakecase(data.action));
@@ -703,8 +711,18 @@ $(document).ready(function () {
   setupButton('recycler-continue-start', 'recyclerContinue');
   setupButton('recycler-continue', 'recyclerContinue');
   setupButton('recycler-finish', 'sendCoins');
-  setupButton('cash-slot-bills-removed', 'cashSlotBillsRemoved');
-  setupButton('leftover-bills-removed', 'leftoverBillsRemoved');
+
+  var leftoverBillsRemovedButton = document.getElementById('leftover-bills-removed');
+  touchEvent(leftoverBillsRemovedButton, function () {
+    leftoverBillsRemovedButton.disabled = true;
+    buttonPressed('leftoverBillsRemoved', undefined);
+  });
+
+  var cashSlotBillsRemovedButton = document.getElementById('cash-slot-bills-removed');
+  touchEvent(cashSlotBillsRemovedButton, function () {
+    cashSlotBillsRemovedButton.disabled = true;
+    buttonPressed('cashSlotBillsRemoved', undefined);
+  });
 
   var blockedCustomerOk = document.getElementById('blocked-customer-ok');
   touchEvent(blockedCustomerOk, function () {
@@ -1241,7 +1259,7 @@ function setDirection(direction) {
 function setTermsScreen(data) {
   var $screen = $('.terms_screen_state');
   $screen.find('.js-terms-title').html(data.title);
-  startPage(data.text, data.acceptDisabled);
+  startPage(data.text || '', data.acceptDisabled);
   $screen.find('.js-terms-cancel-button').html(data.cancel);
   $screen.find('.js-terms-accept-button').html(data.accept);
   resetTermsConditionsTimeout();
@@ -2149,5 +2167,52 @@ function setRates(allRates, fiat) {
 
   $('#rates-fiat-currency').text(fiat);
   ratesTable.empty().append(tableHeader).append(coinEntries);
+}
+
+function enableLiveview(liveviewPort) {
+  var liveviewDiv = $('#liveview-div');
+  var existingImg = document.getElementById('liveview-img');
+  if (existingImg) {
+    existingImg.remove();
+  }
+
+  var liveviewImg = document.createElement('img');
+  liveviewImg.id = 'liveview-img';
+  liveviewImg.type = 'multipart/x-mixed-replace';
+  liveviewImg.src = 'http://localhost:' + liveviewPort + '/?' + Date.now();
+
+  var loaded = false;
+  liveviewImg.onload = function () {
+    console.log('loaded', loaded);
+    if (!loaded) {
+      $('#scan-images').addClass('hide');
+      liveviewDiv.removeClass('hide');
+    }
+    loaded = truet;
+  };
+
+  liveviewDiv.append(liveviewImg);
+
+  var cornerAccentTr = document.createElement('div');
+  cornerAccentTr.className = 'corner-accent top-right';
+
+  liveviewDiv.append(cornerAccentTr);
+
+  var cornerAccentBl = document.createElement('div');
+  cornerAccentBl.className = 'corner-accent bottom-left';
+
+  liveviewDiv.append(cornerAccentBl);
+
+  var scanLine = document.createElement('div');
+  scanLine.className = 'scan-line';
+
+  liveviewDiv.append(scanLine);
+}
+
+function disableLiveview() {
+  var liveviewDiv = $('#liveview-div');
+  liveviewDiv.empty();
+  liveviewDiv.addClass('hide');
+  $('#scan-images').removeClass("hide");
 }
 //# sourceMappingURL=app.js.map

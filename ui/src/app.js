@@ -2223,24 +2223,48 @@ function setRates (allRates, fiat) {
 
 function enableLiveview (liveviewPort) {
   const liveviewDiv = $('#liveview-div')
-  liveviewDiv.empty()
+  const existingImg = document.getElementById('liveview-img')
+  if (existingImg) {
+    existingImg.remove()
+  }
 
   const liveviewImg = document.createElement('img')
-  liveviewImg.id = "liveview-img"
-  liveviewImg.type = "multipart/x-mixed-replace"
+  liveviewImg.id = 'liveview-img'
+  liveviewImg.type = 'multipart/x-mixed-replace'
   liveviewImg.src = `http://localhost:${liveviewPort}/?${Date.now()}`
+
+  let loaded = false
+  liveviewImg.onload = () => {
+    console.log('loaded', loaded)
+    if (!loaded) {
+      $('#scan-images').addClass('hide')
+      liveviewDiv.removeClass('hide')
+    }
+    loaded = truet
+  }
 
   liveviewDiv.append(liveviewImg)
 
-  liveviewImg.onload = () => {
-    $('#scan-images').addClass("hide")
-    liveviewDiv.removeClass("hide")
-  }
+  const cornerAccentTr = document.createElement('div')
+  cornerAccentTr.className = 'corner-accent top-right'
+
+  liveviewDiv.append(cornerAccentTr)
+
+  const cornerAccentBl = document.createElement('div')
+  cornerAccentBl.className = 'corner-accent bottom-left'
+
+  liveviewDiv.append(cornerAccentBl)
+
+  const scanLine = document.createElement('div')
+  scanLine.className = 'scan-line'
+
+  liveviewDiv.append(scanLine)
+
 }
 
 function disableLiveview () {
   const liveviewDiv = $('#liveview-div')
   liveviewDiv.empty()
-  liveviewDiv.addClass("hide")
+  liveviewDiv.addClass('hide')
   $('#scan-images').removeClass("hide")
 }
