@@ -2235,12 +2235,11 @@ function enableLiveview (liveviewPort) {
 
   let loaded = false
   liveviewImg.onload = () => {
-    console.log('loaded', loaded)
     if (!loaded) {
       $('#scan-images').addClass('hide')
       liveviewDiv.removeClass('hide')
     }
-    loaded = truet
+    loaded = true
   }
 
   liveviewDiv.append(liveviewImg)
