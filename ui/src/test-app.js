@@ -294,6 +294,7 @@ function setupFakes () {
     $('.promo_code_not_found_state'),
     $('.custom_permission_screen2_choiceList_state'),
     $('.external_compliance_state'),
+    $('.external_compliance_timeout_state'),
     $('.external_permission_state')
   ]
 

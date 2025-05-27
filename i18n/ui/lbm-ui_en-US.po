@@ -295,8 +295,20 @@ msgid "Still there?"
 msgstr "Still there?"
 
 #: On screen: compliance-timeout
-msgid "Do you need more time to scan the QR code?"
-msgstr "Do you need more time to scan the QR code?"
+msgid "You'll need to scan the QR code on the previous screen to complete registration."
+msgstr "You'll need to scan the QR code on the previous screen to complete registration."
+
+#: On screen: compliance-timeout
+msgid "If you haven't done so yet, press 'Yes' to go back and scan."
+msgstr "If you haven't done so yet, press 'Yes' to go back and scan."
+
+#: On screen: compliance-timeout
+msgid "If you cancel, you won't be able to transact more until you register."
+msgstr "If you cancel, you won't be able to transact more until you register."
+
+#: On screen: compliance-timeout
+msgid "Yes, I need more time"
+msgstr "Yes, I need more time"
 
 #: On screen: facephoto
 msgid "Look at the dot"

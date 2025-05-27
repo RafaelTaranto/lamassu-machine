@@ -63,11 +63,19 @@
 <section class="viewport external_compliance_timeout_state info" data-tr-section="compliance-timeout">
   <main>
     <h3 class="js-i18n sm-margin-bottom">Still there?</h3>
-    <p class="js-i18n d2">Do you need more time to scan the QR code?</p>
+    <p class="js-i18n d2 no-margin-bottom">
+      You'll need to scan the QR code on the previous screen to complete registration.
+    </p>
+    <p class="js-i18n d2 no-margin-bottom">
+      If you haven't done so yet, press 'Yes' to go back and scan.
+    </p>
+    <p class="js-i18n d2">
+      If you cancel, you won't be able to transact more until you register.
+    </p>
   </main>
-  <footer>
-    <button class="button filled-progress-button js-i18n" id="external-compliance-timeout-yes">Yes</button>
-    <button class="button bordered-progress-button js-i18n" id="external-compliance-timeout-no">No</button>
+  <footer class="xl-margin-top">
+    <button class="button filled-progress-button js-i18n" id="external-compliance-timeout-yes">Yes, I need more time</button>
+    <button class="button bordered-progress-button js-i18n" id="external-compliance-timeout-no">No, cancel</button>
   </footer>
 </section>
 
