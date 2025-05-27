@@ -283,12 +283,20 @@ msgid "In order to transact further, we will need to verify your identity throug
 msgstr "In order to transact further, we will need to verify your identity through an external service. In the meantime, your current transaction will be completed and your funds sent."
 
 #: On screen: external-validation
-msgid "To proceed, scan the QR code below and follow the instructions on the website it takes you to. After a quick verification, you may purchase more at this machine."
-msgstr "To proceed, scan the QR code below and follow the instructions on the website it takes you to. After a quick verification, you may purchase more at this machine."
+msgid "To proceed, scan the QR code and follow the instructions on the website it takes you to. After a quick verification, you may purchase more at this machine."
+msgstr "To proceed, scan the QR code and follow the instructions on the website it takes you to. After a quick verification, you may purchase more at this machine."
 
 #: On screen: external-validation
 msgid "OK"
 msgstr "OK"
+
+#: On screen: compliance-timeout
+msgid "Still there?"
+msgstr "Still there?"
+
+#: On screen: compliance-timeout
+msgid "Do you need more time to scan the QR code?"
+msgstr "Do you need more time to scan the QR code?"
 
 #: On screen: facephoto
 msgid "Look at the dot"

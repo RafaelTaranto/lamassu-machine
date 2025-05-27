@@ -1263,10 +1263,6 @@ footer .filled-progress-button:after, footer .bordered-progress-button:after {
   max-width: 78vh;
 }
 
-.external_compliance_state .text-content {
-  max-width: 65vw;
-}
-
 .printer_error_state .text-content {
   max-width: 79vh;
 }
@@ -3497,12 +3493,28 @@ button[disabled] {
   pointer-events: none;
 }
 
-.external_compliance_state {
-  footer-margin-top: 15px;
+.external_compliance_timeout_state {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+
+.external_compliance_state main {
+  margin-top: 10vh;
 }
 
 .external_compliance_state footer {
   margin-top: 5vh;
+  margin-bottom: 10vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
 }
 
 .external-validation-info {
@@ -4195,6 +4207,7 @@ button[disabled] {
   }
   .external_compliance_state footer {
     margin-top: 0;
+    margin-bottom: 10vh;
   }
   .maintenance_state header,
   .locked_state header {
@@ -4447,17 +4460,26 @@ button[disabled] {
     text-align: center;
     gap: 1vh;
   }
-  .deposit_state .primary-side {
-    margin-top: 35vh;
-    text-align: center;
+  .deposit_state main, .external_compliance_state main {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -webkit-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-pack: start;
+    -webkit-justify-content: start;
+            justify-content: start;
   }
-  .deposit_state .qr-wrapper {
+  .deposit_state .primary-side, .external_compliance_state .primary-side {
+    text-align: center;
+    margin-top: 10vh;
+  }
+  .deposit_state .qr-wrapper, .external_compliance_state .qr-wrapper {
+    width: 25vh;
+    height: 25vh;
+  }
+  .deposit_state .qr-wrapper div, .external_compliance_state .qr-wrapper div {
     -webkit-transform: scale(0.6);
             transform: scale(0.6);
-    position: absolute;
-    top: 0;
-  }
-  .deposit_state .qr-wrapper div {
     margin-top: 0;
   }
   .fiat_complete_state .primary-side {

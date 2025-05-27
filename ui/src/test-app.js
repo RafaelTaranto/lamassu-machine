@@ -340,6 +340,7 @@ function setupFakes () {
   qrize(address, $('#qr-code-fiat-receipt'), CASH_OUT_QR_COLOR)
   qrize(address, $('#qr-code-fiat-complete'), CASH_OUT_QR_COLOR)
   qrize(address, $('#qr-code-deposit'), CASH_OUT_QR_COLOR)
+  qrize(address, $('#qr-code-external-validation'), CASH_OUT_QR_COLOR)
 }
 
 function qrize (text, target, color, lightning) {
