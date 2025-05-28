@@ -294,6 +294,7 @@ function setupFakes () {
     $('.promo_code_not_found_state'),
     $('.custom_permission_screen2_choiceList_state'),
     $('.external_compliance_state'),
+    $('.external_compliance_timeout_state'),
     $('.external_permission_state')
   ]
 
@@ -340,6 +341,7 @@ function setupFakes () {
   qrize(address, $('#qr-code-fiat-receipt'), CASH_OUT_QR_COLOR)
   qrize(address, $('#qr-code-fiat-complete'), CASH_OUT_QR_COLOR)
   qrize(address, $('#qr-code-deposit'), CASH_OUT_QR_COLOR)
+  qrize(address, $('#qr-code-external-validation'), CASH_OUT_QR_COLOR)
 }
 
 function qrize (text, target, color, lightning) {

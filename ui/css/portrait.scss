@@ -474,6 +474,7 @@ main {
   }
   footer {
     margin-top: 0;
+    margin-bottom: 10vh;
   }
 }
 
@@ -748,16 +749,20 @@ main {
   }
 }
 
-.deposit_state {
+.deposit_state, .external_compliance_state {
+  main {
+    flex-direction: column-reverse;
+    justify-content: start;
+  }
   .primary-side {
-    margin-top: 35vh;
     text-align: center;
+    margin-top: 10vh;
   }
   .qr-wrapper {
-    transform: scale(0.6);
-    position: absolute;
-    top: 0;
+    width: 25vh;
+    height: 25vh;
     div {
+      transform: scale(0.6);
       margin-top: 0;
     }
   }

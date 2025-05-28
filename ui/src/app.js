@@ -855,6 +855,8 @@ $(document).ready(function () {
   setupButton('hard-limit-reached-ok', 'idle')
   setupButton('deposit-timeout-sent-yes', 'depositTimeout')
   setupButton('deposit-timeout-sent-no', 'depositTimeoutNotSent')
+  setupButton('external-compliance-timeout-yes', 'externalComplianceTimeoutYes')
+  setupButton('external-compliance-timeout-no', 'externalComplianceTimeoutNo')
   setupButton('out-of-cash-ok', 'idle')
   setupButton('cash-in-disabled-ok', 'idle')
   setupButton('cash-in-only-ok', 'idle')
@@ -1282,7 +1284,8 @@ function setDirection (direction) {
     $('.custom_permission_screen2_numerical_state'),
     $('.custom_permission_screen2_text_state'),
     $('.custom_permission_screen2_choiceList_state'),
-    $('.external_compliance_state')
+    $('.external_compliance_state'),
+    $('.external_compliance_timeout_state')
   ]
   cashDirection = direction
   states.forEach(it => {
@@ -2164,7 +2167,7 @@ function setReceiptPrint (receiptStatus, smsReceiptStatus) {
 
 function externalCompliance (url) {
   qrize(url, $('#qr-code-external-validation'), cashDirection === 'cashIn' ? CASH_IN_QR_COLOR : CASH_OUT_QR_COLOR)
-  return setScreen('external_compliance')
+  return setState('external_compliance')
 }
 
 function setAutomaticPrint (automaticPrint) {

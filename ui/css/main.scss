@@ -1824,14 +1824,20 @@ button[disabled] {
   pointer-events: none;
 }
 
-.external_compliance_state {
-  footer: {
-    margin-top: 15px;
-  }
+.external_compliance_timeout_state {
+  justify-content: center;
+}
+
+.external_compliance_state main {
+  margin-top: 10vh;
 }
 
 .external_compliance_state footer {
   margin-top: 5vh;
+  margin-bottom: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .external-validation-info {
