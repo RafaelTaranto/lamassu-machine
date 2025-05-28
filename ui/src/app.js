@@ -1153,8 +1153,6 @@ function setScreen (newScreen, oldScreen) {
 }
 
 function setState (state, delay) {
-  console.log('state', state)
-  console.log('currentState', currentState)
   if (state === currentState) return
 
   if (currentState === 'terms_screen') {
