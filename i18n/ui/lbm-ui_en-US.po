@@ -14,6 +14,22 @@ msgstr "For both your privacy and safety against scams, please generate a new on
 msgid "Start over"
 msgstr "Start over"
 
+#: On screen: address-reuse
+msgid "Note! You must own this address and be able to move the funds on it."
+msgstr "Note! You must own this address and be able to move the funds on it."
+
+#: On screen: address-reuse
+msgid "We are not responsible for funds sent to an address you no longer control."
+msgstr "We are not responsible for funds sent to an address you no longer control."
+
+#: On screen: address-reuse
+msgid "Yes, use this address"
+msgstr "Yes, use this address"
+
+#: On screen: address-reuse
+msgid "No, scan a different wallet"
+msgstr "No, scan a different wallet"
+
 #: On screen: are-you-sure
 msgid "Are you sure?"
 msgstr "Are you sure?"
@@ -1077,6 +1093,10 @@ msgstr "Scan your %s address"
 #: On screen: dynamic
 msgid "Invalid %s address"
 msgstr "Invalid %s address"
+
+#: On screen: dynamic
+msgid "Would you like to send to the %s address you last used?"
+msgstr "Would you like to send to the %s address you last used?"
 
 #: On screen: dynamic
 msgid "Transaction limit reached, please cash out"

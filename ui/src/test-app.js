@@ -230,7 +230,7 @@ function setupFakes () {
   ].join('')
 
   let address = 'wjy98nu928ud1o82dbj2u9i81wqjjyu98iwwjy98nu928ud1o82dbj2u9i81wqjjyu98iwnn'
-  $('.deposit_state .send-notice .crypto-address').text(formatAddress(address))
+  $('.deposit_state .send-notice .crypto-address .last-use-crypto-address').text(formatAddress(address))
   $('.fiat_receipt_state .sent-coins .crypto-address').text(formatAddress(address))
   $('.fiat_complete_state .sent-coins .crypto-address').text(formatAddress(address))
   $('.deposit_state .send-notice .crypto-address').text(formatAddress(address))
@@ -240,6 +240,7 @@ function setupFakes () {
   $('.insert_bills_state .bottom-bar .current-crypto').text('Lamassu Cryptomat')
   $('#js-i18n-high-bill-header').text('We\'re a little low on crypto.')
   $('#js-i18n-highest-bill').html(`Please insert <span class="integer">10</span> EUR or less.`)
+  $('.js-i18n-want-reuse').html('Would you like to send to the BTC address you last used?')
   $('.js-i18n-did-send-coins').html('Have you sent the BTC yet?')
   $('.js-i18n-lowest-bill').html('Please insert <span class="integer">10</span> EUR or more.')
   $('.js-i18n-total-purchased').html('total purchased')

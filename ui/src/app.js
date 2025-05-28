@@ -112,6 +112,7 @@ function processData (data) {
   if (data.cassettes) buildCassetteButtons(data.cassettes, NUMBER_OF_BUTTONS)
   if (data.readingBills) readingBills(data.readingBills)
   if (data.cryptoCode) translateCoin(data.cryptoCode)
+  if (data.lastUsedAddress) lastUsedAddress(data.lastUsedAddress)
   if (data.tx) {
     if (data.tx.cashInFee) setFixedFee(data.tx.cashInFee)
     else if (data.tx.cashOutFee) setFixedFee(data.tx.cashOutFee)
@@ -849,6 +850,9 @@ $(document).ready(function () {
   setupButton('invalid-address-try-again', 'invalidAddressTryAgain')
   setupButton('address-reuse-start-over', 'idle')
   setupButton('suspicious-address-start-over', 'idle')
+
+  setupButton('reuse-last-address-yes', 'reuseLastAddress')
+  setupButton('reuse-last-address-no', 'invalidAddressTryAgain')
 
   setupButton('sanctions-failure-ok', 'idle')
   setupButton('limit-reached-ok', 'idle')
@@ -1840,6 +1844,11 @@ function t (id, str) {
   $('#js-i18n-' + id).html(str)
 }
 
+
+function lastUsedAddress (lastUsedAddress) {
+  $('.last-use-crypto-address').html(formatAddress(lastUsedAddress))
+}
+
 function translateCoin (_cryptoCode) {
   const coin = getCryptoCurrency(_cryptoCode)
   const cryptoCode = coin.cryptoCodeDisplay || _cryptoCode
@@ -1848,6 +1857,7 @@ function translateCoin (_cryptoCode) {
   $('.js-i18n-did-send-coins').html(translate('Have you sent the %s yet?', [cryptoCode]))
   $('.js-i18n-scan-address').html(translate('Scan your %s address', [cryptoCode]))
   $('.js-i18n-invalid-address').html(translate('Invalid %s address', [cryptoCode]))
+  $('.js-i18n-want-reuse').html(translate('Would you like to send to the %s address you last used?', [cryptoCode]))
 }
 
 function initTranslatePage () {

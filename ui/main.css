@@ -3503,6 +3503,15 @@ button[disabled] {
   margin-top: 10vh;
 }
 
+.reuse_last_address_state {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.reuse_last_address_state main {
+  width: 66vw;
+}
+
 .external_compliance_state footer {
   margin-top: 5vh;
   margin-bottom: 10vh;
@@ -4546,5 +4555,8 @@ button[disabled] {
   #liveview-div {
     max-width: 90%;
     margin-top: 100px;
+  }
+  .reuse_last_address_state main {
+    width: 80vw;
   }
 }
