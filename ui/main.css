@@ -4559,4 +4559,7 @@ button[disabled] {
   .reuse_last_address_state main {
     width: 80vw;
   }
+  .reuse_last_address_state h3, .reuse_last_address_state button {
+    line-height: 1;
+  }
 }
