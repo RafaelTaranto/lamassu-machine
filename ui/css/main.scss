@@ -1837,6 +1837,10 @@ button[disabled] {
   main {
     width: 66vw;
   }
+
+  h3, button {
+    line-height: 1;
+  }
 }
 
 .external_compliance_state footer {
