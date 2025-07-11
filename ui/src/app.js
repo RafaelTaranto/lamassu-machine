@@ -129,7 +129,7 @@ function processData (data) {
   if (data.tx && data.tx.discount) setCurrentDiscount(data.tx.discount)
   if (data.receiptStatus) setReceiptPrint(data.receiptStatus, null)
   if (data.smsReceiptStatus) setReceiptPrint(null, data.smsReceiptStatus)
-  if (data.automaticPrint) setAutomaticPrint(data.automaticPrint)
+  if (data.automaticPrint) setAutomaticPrint()
 
   if (data.context) {
     $('.js-context').hide()
@@ -2180,16 +2180,10 @@ function externalCompliance (url) {
   return setState('external_compliance')
 }
 
-function setAutomaticPrint (automaticPrint) {
-  if (automaticPrint) {
-    $('#print-receipt-cash-in-button').hide()
-    $('#print-receipt-cash-out-button').hide()
-    $('#print-receipt-cash-in-fail-button').hide()
-  } else {
-    $('#print-receipt-cash-in-button').show()
-    $('#print-receipt-cash-out-button').show()
-    $('#print-receipt-cash-in-fail-button').show()
-  }
+function setAutomaticPrint () {
+  $('#print-receipt-cash-in-button').addClass('hide')
+  $('#print-receipt-cash-out-button').addClass('hide')
+  $('#print-receipt-cash-in-fail-button').addClass('hide')
 }
 
 function suspiciousAddress (blacklistMessage) {
