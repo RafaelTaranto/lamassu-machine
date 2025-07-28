@@ -896,6 +896,24 @@ $(document).ready(function () {
 
   setupButton('maintenance_restart', 'maintenanceRestart')
 
+  // Setup deposit QR code toggle buttons
+  const qrToggleStandard = document.getElementById('qr-toggle-standard')
+  const qrToggleAddress = document.getElementById('qr-toggle-address')
+  
+  touchEvent(qrToggleStandard, function () {
+    $('#qr-toggle-standard').addClass('enabled')
+    $('#qr-toggle-address').removeClass('enabled')
+    $('#qr-container-standard').show()
+    $('#qr-container-address').hide()
+  })
+  
+  touchEvent(qrToggleAddress, function () {
+    $('#qr-toggle-address').addClass('enabled')
+    $('#qr-toggle-standard').removeClass('enabled')
+    $('#qr-container-address').show()
+    $('#qr-container-standard').hide()
+  })
+
   calculateAspectRatio()
 
   const cryptoButtons = document.getElementById('crypto-buttons')
@@ -1966,6 +1984,7 @@ function setDepositAddress (depositInfo) {
   $('.deposit_state .send-notice').show()
 
   qrize(depositInfo.depositUrl, $('#qr-code-deposit'), CASH_OUT_QR_COLOR)
+  qrize(depositInfo.toAddress, $('#qr-code-deposit-address'), CASH_OUT_QR_COLOR)
 }
 
 function setVersion (version) {
