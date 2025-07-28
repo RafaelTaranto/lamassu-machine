@@ -215,12 +215,16 @@ msgid "will be dispensed to you."
 msgstr "will be dispensed to you."
 
 #: On screen: deposit
-msgid "You will send us"
-msgstr "You will send us"
+msgid "You will send us exactly"
+msgstr "You will send us exactly"
 
 #: On screen: deposit
 msgid "to:"
 msgstr "to:"
+
+#: On screen: deposit
+msgid "Use this QR code if you're having trouble scanning the standard one"
+msgstr "Use this QR code if you're having trouble scanning the standard one"
 
 #: On screen: dispensing
 msgid "Dispensing..."

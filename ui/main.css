@@ -3712,6 +3712,64 @@ button[disabled] {
     opacity: 0;
   }
 }
+/* QR Toggle Styles */
+.qr-toggle-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  margin-bottom: 2vh;
+  gap: 1vh;
+}
+
+.qr-toggle-button {
+  padding: 1.5vh 3vh;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  font-size: 2vh;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.qr-toggle-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.qr-toggle-button.enabled, .qr-toggle-button.enabled {
+  background-color: #ffffff;
+  color: #403c51;
+  border-color: #ffffff;
+}
+
+.qr-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+
+.qr-help-text {
+  margin-top: 2vh;
+  color: white;
+  font-weight: bold;
+  font-size: 1.8vh;
+  text-align: center;
+  max-width: 80%;
+  line-height: 1.4;
+}
+
 @media (orientation: portrait) {
   header {
     padding: 2vh;
@@ -4493,6 +4551,9 @@ button[disabled] {
     -webkit-transform: scale(0.6);
             transform: scale(0.6);
     margin-top: 0;
+  }
+  .deposit_state .primary-side {
+    margin-top: 2vh;
   }
   .fiat_complete_state .primary-side {
     margin-top: 32vh;
