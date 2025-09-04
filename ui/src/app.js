@@ -63,6 +63,75 @@ function connect () {
   websocket.onerror = err => console.log(err)
 }
 
+function setupConsoleErrorCapture () {
+  var originalError = console.error
+  var originalWarn = console.warn
+  
+  function sendLogToWebsocket (level, message, details) {
+    if (websocket && websocket.readyState === WebSocket.OPEN) {
+      try {
+        var payload = {
+          type: 'consoleLog',
+          level: level,
+          message: message,
+          timestamp: new Date().toISOString()
+        }
+        
+        if (details) {
+          payload.details = details
+        }
+        
+        websocket.send(JSON.stringify(payload))
+      } catch (e) {
+        originalError('Failed to send ' + level + ' to server:', e)
+      }
+    }
+  }
+  
+  function formatConsoleArgs (args) {
+    return Array.prototype.slice.call(args).map(function(arg) {
+      if (typeof arg === 'object') {
+        return JSON.stringify(arg)
+      }
+      return String(arg)
+    }).join(' ')
+  }
+  
+  console.error = function () {
+    originalError.apply(console, arguments)
+    var errorMessage = formatConsoleArgs(arguments)
+    sendLogToWebsocket('error', errorMessage)
+  }
+  
+  console.warn = function () {
+    originalWarn.apply(console, arguments)
+    var warnMessage = formatConsoleArgs(arguments)
+    sendLogToWebsocket('warn', warnMessage)
+  }
+  
+  window.addEventListener('error', function (event) {
+    var errorInfo = {
+      message: event.message,
+      source: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+      error: event.error ? event.error.stack : null
+    }
+    
+    sendLogToWebsocket('error', 'Uncaught error: ' + errorInfo.message, errorInfo)
+  })
+  
+  window.addEventListener('unhandledrejection', function (event) {
+    var errorInfo = {
+      reason: event.reason,
+      promise: event.promise
+    }
+    
+    var message = 'Unhandled promise rejection: ' + (event.reason ? event.reason.toString() : 'Unknown')
+    sendLogToWebsocket('error', message, errorInfo)
+  })
+}
+
 function verifyConnection () {
   if (websocket.readyState === websocket.CLOSED) {
     connect()
@@ -702,6 +771,7 @@ $(document).ready(function () {
   })
 
   if (DEBUG_MODE !== 'demo') {
+    setupConsoleErrorCapture()
     connect()
     setInterval(verifyConnection, 1000)
   }
