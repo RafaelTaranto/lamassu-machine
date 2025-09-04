@@ -1318,7 +1318,6 @@ function setCryptomatModel(model) {
   versions.forEach(function (it) {
     return body.removeClass(it);
   });
-  $('body').addClass(model.startsWith('douro') ? 'douro' : model);
 }
 
 function enableRecyclerBillButtons() {
