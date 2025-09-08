@@ -1,7 +1,7 @@
 {
   "name": "lamassu-machine",
   "license": "./LICENSE",
-  "version": "11.1.0",
+  "version": "11.2.0",
   "dependencies": {
     "@haensl/subset-sum": "^3.0.5",
     "@lamassu/coins": "1.6.1",
