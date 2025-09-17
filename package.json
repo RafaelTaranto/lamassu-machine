@@ -1,7 +1,7 @@
 {
   "name": "lamassu-machine",
   "license": "./LICENSE",
-  "version": "11.1.0",
+  "version": "11.2.1",
   "dependencies": {
     "@haensl/subset-sum": "^3.0.5",
     "@lamassu/coins": "1.6.1",
@@ -34,7 +34,7 @@
   },
   "optionalDependencies": {
     "@lamassu/bnr-advance": "1.4.0",
-    "@lamassu/genmega": "^1.4.0",
+    "@lamassu/genmega": "^1.5.3",
     "@lamassu/manatee": "^1.1.0",
     "@lamassu/supyo": "2.0.0",
     "@lamassu/v4l2camera": "1.4.2"
