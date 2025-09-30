@@ -14,7 +14,7 @@ const newPath = process.argv[4];
 const basePath = newPath ? '/opt/lamassu-updates/extract' : '/tmp/extract'
 const packagePath = `${basePath}/package/subpackage`
 
-const supportedMachines = ['upboard', 'up4000', 'coincloud', 'generalbytes', 'genmega']
+const supportedMachines = ['acp', 'upboard', 'up4000', 'coincloud', 'generalbytes', 'genmega']
 
 const hardwarePath = `${packagePath}/hardware/${hardwareCode}/${machineCode}`
 const supervisorPath = `${packagePath}/supervisor/${hardwareCode}/${machineCode}`

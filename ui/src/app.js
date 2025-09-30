@@ -1315,7 +1315,6 @@ function setCryptomatModel (model) {
   const body = $('body')
 
   versions.forEach(it => body.removeClass(it))
-  $('body').addClass(model.startsWith('douro') ? 'douro' : model)
 }
 
 function enableRecyclerBillButtons() {
