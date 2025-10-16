@@ -138,6 +138,12 @@ function verifyConnection () {
   }
 }
 
+function emitEvent (button, data) {
+  var res = { button: button }
+  if (data || data === null) res.data = data
+  if (websocket) websocket.send(JSON.stringify(res))
+}
+
 function buttonPressed (button, data) {
   if (!buttonActive) return
   promoKeyboard.deactivate()
@@ -432,6 +438,10 @@ function externalPermission () {
 }
 
 function customInfoRequestPermission (customInfoRequest) {
+  if (customInfoRequest.disablePermissionScreen) {
+    emitEvent('permissionCustomInfoRequest')
+    return
+  }
   $('#custom-screen1-title').text(customInfoRequest.screen1.title)
   $('#custom-screen1-text').text(customInfoRequest.screen1.text)
   setComplianceTimeout(null, 'finishBeforeSms')
