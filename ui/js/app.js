@@ -1931,6 +1931,8 @@ function translatePage() {
     el.attr('placeholder', translate(base));
   });
 
+  applyCustomTranslations();
+
   // Adjust send coins button
   var length = $('#send-coins span').text().length;
   if (length > 17) $('body').addClass('i18n-long-send-coins');else $('body').removeClass('i18n-long-send-coins');
@@ -2238,8 +2240,30 @@ function suspiciousAddress(blacklistMessage) {
   }
 }
 
+var customTranslations = {};
+
 function setScreenOptions(opts) {
   opts.rates && opts.rates.active ? $('#rates-section').show() : $('#rates-section').hide();
+
+  if (opts.customText) {
+    customTranslations = opts.customText.reduce(function (acc, item) {
+      acc[item.id] = item.text;
+      return acc;
+    }, {});
+    applyCustomTranslations();
+  }
+}
+
+function applyCustomTranslations() {
+  $('.js-custom-text').each(function () {
+    var el = $(this);
+    var screenId = el.data('text-id');
+    console.log(screenId, customTranslations[screenId]);
+
+    if (screenId && customTranslations[screenId]) {
+      el.html(customTranslations[screenId]);
+    }
+  });
 }
 
 function thousandSeparator(number, country, minimumFractionDigits) {
