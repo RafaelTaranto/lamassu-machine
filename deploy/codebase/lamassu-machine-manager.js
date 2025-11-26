@@ -212,6 +212,7 @@ const disableUSBAutosuspend = cb => {
 }
 
 const installUVCQuirk = cb => {
+  LOG("Installing UVC quirks")
   const uvcvideo = "/etc/modprobe.d/uvcvideo.conf"
   try {
     if (fs.existsSync(uvcvideo)) return cb()
