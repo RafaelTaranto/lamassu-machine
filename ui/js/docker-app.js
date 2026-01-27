@@ -411,13 +411,13 @@ function translate(data, fetchArgs) {
 
     return fetchArgs ? (_locale$translate = locale.translate(data)).fetch.apply(_locale$translate, _toConsumableArray(fetchArgs)) : locale.translate(data).fetch();
   } catch (error) {
-    if (!defaultLocale) console.error('Error while translating: ', error);else {
+    if (!defaultLocale) console.log('Error while translating: ', error);else {
       try {
         var _defaultLocale$transl;
 
         return fetchArgs ? (_defaultLocale$transl = defaultLocale.translate(data)).fetch.apply(_defaultLocale$transl, _toConsumableArray(fetchArgs)) : defaultLocale.translate(data).fetch();
       } catch (e) {
-        console.error('Error while translating: ', e);
+        console.log('Error while translating: ', e);
         return data;
       }
     }
